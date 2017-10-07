@@ -7,14 +7,31 @@ package program.bookcase.model;
 *16:44
 */
 
-public class Books {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "BOOKS")
+public class Books {
+    @Id
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "author")
     private String author;
+
+    @Column(name = "isbn")
     private String isbn;
+
+    @Column(name = "printYear")
     private int printYear;
+
+    @Column(name = "readAlready")
     private boolean readAlready;
 
     public int getId() {
