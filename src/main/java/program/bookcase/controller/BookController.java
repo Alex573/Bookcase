@@ -51,8 +51,7 @@ public class BookController {
 
         return "books";
 
-        /*model.addAttribute("listBooks", crudAppBooksService.listBooks());
-        return "books";*/
+
     }
 
     @RequestMapping(value = "/books/add", method = RequestMethod.POST)
