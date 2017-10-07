@@ -42,9 +42,9 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
-    public void removeBook(Books book) {
+    public void removeBook(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        Books books = (Books) session.load(Books.class, new Integer(id));
+        Books book = (Books) session.load(Books.class, new Integer(id));
         if (book != null) {
             session.delete(book);
         }

@@ -18,7 +18,7 @@ public interface BookDao {
     public void updateBook(Books book);
 
     //Удаление
-    public void removeBook(Books book);
+    public void removeBook(int id);
 
     // Метод чтения книги
     public void readBook(Books book);
