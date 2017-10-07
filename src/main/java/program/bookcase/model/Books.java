@@ -75,6 +75,14 @@ public class Books {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Books{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", printYear=" + printYear +
+                ", readAlready=" + readAlready +
+                '}';
     }
 }
