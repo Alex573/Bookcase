@@ -50,7 +50,7 @@
         <property name="bookDao" ref="bookDao"/>
     </bean>
 
-    <context:component-scan base-package="program.bookcase.controller"/>
+    <context:component-scan base-package="program.bookcase"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 

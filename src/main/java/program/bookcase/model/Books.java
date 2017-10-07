@@ -10,7 +10,7 @@ package program.bookcase.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "BOOKS")
+@Table(name = "book")
 public class Books {
     @Id
     @Column(name = "id")
