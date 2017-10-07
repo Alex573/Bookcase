@@ -73,5 +73,8 @@ public class Books {
         this.readAlready = readAlready;
     }
 
-
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
