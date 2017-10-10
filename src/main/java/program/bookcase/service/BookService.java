@@ -11,30 +11,24 @@ import java.util.List;
 *18:01
 */
 public interface BookService {
-    //Добавление книги
+
     public void addBook(Books book);
 
-    //Изменение
     public void updateBook(Books book);
 
-    //Удаление
-    public void removeBook(int id);
+    public void delBook(int id);
 
-    // Метод чтения книги
     public void readBook(Books book);
 
-    // Метод поиска книги по названию
-    public List<Books> searchBookByName(String title);
+    public List<Books> searchBookByTitle(String title);
 
-    // Метод поиска книги по году
+    public List<Books> searchBookByAuthor(String author);
+
     public List<Books> searchBookByYear(int printYear);
 
-    // Метод поиска книги по прочтению
     public List<Books> searchBookByRead(boolean readAlready);
 
-    // Метод вывода списка книг
     public List<Books> listBooks();
 
-    // Получение книги по id
     public Books getBookById(int id);
 }

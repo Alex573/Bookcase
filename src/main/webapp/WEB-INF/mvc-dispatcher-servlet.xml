@@ -18,7 +18,7 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/test"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
     </bean>
@@ -50,7 +50,7 @@
         <property name="bookDao" ref="bookDao"/>
     </bean>
 
-    <context:component-scan base-package="program.bookcase"/>
+    <context:component-scan base-package="program.bookcase.controller"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 

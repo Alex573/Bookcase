@@ -1,29 +1,31 @@
 package program.bookcase.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.support.PagedListHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import program.bookcase.model.Books;
-import program.bookcase.service.BookService;
-
-import java.util.List;
-
-
 /*
 *Lex
 *
 *07.10.2017
 *18:49
 */
+
+import program.bookcase.model.Books;
+import program.bookcase.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.support.PagedListHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
 @Controller
 public class BookController {
+
+
+
+    @Autowired
+    @Qualifier("bookService")
     private BookService bookService;
 
-    @Autowired(required = true)
-    @Qualifier(value = "bookService")
     public void setBookService(BookService bookService) {
         this.bookService = bookService;
     }
@@ -51,11 +53,10 @@ public class BookController {
 
         return "books";
 
-
     }
 
     @RequestMapping(value = "/books/add", method = RequestMethod.POST)
-    public String createBook(@ModelAttribute("book") Books books) {
+    public String addBook(@ModelAttribute("book") Books books) {
         if (books.getId() == 0) {
             bookService.addBook(books);
         } else {
@@ -64,9 +65,9 @@ public class BookController {
         return "redirect:/";
     }
 
-    @RequestMapping("/delete/{id}")
-    public String deleteBook(@PathVariable("id") int id) {
-        bookService.removeBook(id);
+    @RequestMapping("/del/{id}")
+    public String delBook(@PathVariable("id") int id) {
+        bookService.delBook(id);
         return "redirect:/";
     }
 
@@ -80,22 +81,28 @@ public class BookController {
     @RequestMapping("/search/title")
     public String searchBookByTitle(@RequestParam(value = "title") String title, Model model) {
         model.addAttribute("book", new Books());
-        model.addAttribute("listBooks", bookService.searchBookByName(title));
+        model.addAttribute("listBooks", bookService.searchBookByTitle(title));
+        return "books";
+    }
+    @RequestMapping("/search/author")
+    public String searchBookByAuthor(@RequestParam(value = "author") String author, Model model) {
+        model.addAttribute("book", new Books());
+        model.addAttribute("listBooks", bookService.searchBookByAuthor(author));
         return "books";
     }
 
-    @RequestMapping("/search/year")
-    public String searchBookByYear(@RequestParam(value = "year") int year,
-                                   @RequestParam(value = "page", required = false) Integer page, Model model) {
+    @RequestMapping("/search/printYear")
+    public String searchBookByYear(@RequestParam(value = "printYear") int printYear, Model model) {
         model.addAttribute("book", new Books());
-        model.addAttribute("listBooks", bookService.searchBookByYear(year));
+        model.addAttribute("listBooks", bookService.searchBookByYear(printYear));
         return "books";
     }
 
-    @RequestMapping("/search/read")
-    public String searchBookByRead(@RequestParam(value = "read") boolean read, Model model) {
+    @RequestMapping("/search/readAlready")
+    public String searchBookByRead(@RequestParam(value = "readAlready") boolean readAlready, Model model) {
         model.addAttribute("book", new Books());
-        model.addAttribute("listBooks", bookService.searchBookByRead(read));
+        model.addAttribute("listBooks", bookService.searchBookByRead(readAlready));
         return "books";
     }
+
 }

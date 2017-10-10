@@ -11,6 +11,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8” />
 <html>
 <head>
     <title>Book case</title>
@@ -47,60 +48,9 @@
             color: #333;
             background-color: #f0f0f0;
         }
-
-        .tg .tg-4eph {
-            background-color: #f9f9f9
-        }
         .center {
             text-align: center;
         }
-
-        .style_text{
-            width: auto;
-            font-size: 14px;
-            padding: 6px 0 4px 10px;
-            background: #F6F6f6;
-
-        }
-        .td_report {
-            border-bottom: 1px solid #ccc;
-            color: #669;
-            padding: 9px 8px;
-            transition: .3s linear;
-        }
-        .bot3:hover, .bot3:focus {
-            border-color: rgba(255, 0, 0, 0.8);
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(250, 0, 0, 0.9);
-            outline: 0 none;
-        }
-        .tf {
-            background-color: #FFFFFF;
-            border: 1px solid #CCCCCC;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-            transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
-            border-radius: 4px;
-            color: #555555;
-            width: auto;
-            margin: auto;
-            font-size: 14px;
-            text-align: center;
-            height: auto;
-            line-height: 20px;
-            margin-bottom: 10px;
-            padding: 4px 6px;
-            vertical-align: middle;
-            text-decoration: none;
-        }
-
-        .tf:hover, .tf:focus {
-            border-color: rgba(12, 123, 69, 0.8);
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(12, 123, 69, 0.9);
-            outline: 0 none;
-        }
-
-
-
-
     </style>
 </head>
 <body>
@@ -109,10 +59,10 @@
 
 
 <c:if test="${!empty book.title}">
-    <h1>Редактировать книгу:</h1>
+    <div align="right">Изменить</div>
 </c:if>
 <c:if test="${empty book.title}">
-    <h1>Добавить книгу:</h1>
+    <div align="right">Добавить</div>
 </c:if>
 <c:url var="add" value="/books/add"/>
 <form:form action="${add}" commandName="book">
@@ -124,14 +74,14 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="ide" readonly="true" disabled="true" type="hidden"/>
+                    <form:input path="id" readonly="true" disabled="true" type="hidden"/>
                     <form:hidden path="id"/>
                 </td>
             </tr>
         </c:if>
         <tr>
             <td>
-                <form:label path="Title">
+                <form:label path="title">
                     <spring:message text="Название"/>
                 </form:label>
             </td>
@@ -141,7 +91,7 @@
         </tr>
         <tr>
             <td>
-                <form:label path="Description">
+                <form:label path="description">
                     <spring:message text="Описание"/>
                 </form:label>
             </td>
@@ -152,7 +102,7 @@
         <tr>
         <tr>
             <td>
-                <form:label path="Author">
+                <form:label path="author">
                     <spring:message text="Автор"/>
                 </form:label>
             </td>
@@ -184,7 +134,7 @@
         <tr>
             <td>
                 <form:label path="readAlready">
-                    <spring:message text="Год"/>
+                    <spring:message text="Прочитана"/>
                 </form:label>
             </td>
             <td>
@@ -195,31 +145,35 @@
             <td colspan="2">
                 <c:if test="${!empty book.title}">
                     <input type="submit"
-                           value="<spring:message text="Edit Book"/>"/>
+                           value="<spring:message text="Изменить"/>"/>
                 </c:if>
                 <c:if test="${empty book.title}">
                     <input type="submit"
-                           value="<spring:message text="Add Book"/>"/>
+                           value="<spring:message text="Добавить"/>"/>
                 </c:if>
             </td>
         </tr>
     </table>
 </form:form>
-
+<div align="left">Поиск</div>
 <form action="/search/title">
-    Название: <input type="text" name="title" class="style_text"/>
-    <input type="submit" value="Поиск" class="tf"/>
+    Название: <input type="text" name="title"/>
+    <input type="submit" value="Поиск"/>
 </form>
-<form action="/search/year">
-    Год: <input type="text" name="year" class="style_text"/>
-    <input type="submit" value="Поиск" class="tf"/>
+<form action="/search/author">
+    Автор: <input type="text" name="author"/>
+    <input type="submit" value="Поиск"/>
 </form>
-<form action="/search/read">
-    Прочтено: <input type="text" name="read" class="style_text"/>
-    <input type="submit" value="Поиск" class="tf"/>
+<form action="/search/printYear">
+    Год: <input type="text" name="printYear"/>
+    <input type="submit" value="Поиск"/>
+</form>
+<form action="/search/readAlready">
+    Прочтено: <input type="text" name="readAlready"/>
+    <input type="submit" value="Поиск"/>
 </form>
 <form action="/">
-    <input type="submit" value="Сброс" class="tf"/>
+    <input type="submit" value="Сброс"/>
 </form>
 
 
@@ -246,14 +200,14 @@
                 <td>${book.isbn}</td>
                 <td>${book.printYear}</td>
                 <td>${book.readAlready}</td>
-                <td class="td_report">
+                <td>
                     <form action="/edit/${book.id}">
-                        <input type="submit" value="Изменить" class="bot3">
+                        <input type="submit" value="Изменить">
                     </form>
                 </td>
-                <td class="td_report">
+                <td>
                     <form action="/delete/${book.id}">
-                        <input type="submit" value="Удалить" class="bot3">
+                        <input type="submit" value="Удалить">
                     </form>
                 </td>
             </tr>
