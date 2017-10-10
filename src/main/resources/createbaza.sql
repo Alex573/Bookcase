@@ -17,13 +17,13 @@ COMMENT = 'book_table';
 
 
 INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Повести Белкина ','В 1830 году Россию захватила вспышка холеры. Дорога к Москве была перекрыта из-за карантина,','Пушкин','689-5-91045-983-4','2017','0');
-INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Евгений Онегин','«Евгений Онегин»  самое известное и самое значительное произведение А. С. Пушкина, вершина ','Пушкин','690-5-91045-983-4','2017','0');
+INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Евгений Онегин','«Евгений Онегин»  самое известное и самое значительное произведение А. С. Пушкина, вершина ','Пушкин','690-5-91045-983-4','2017','1');
 INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Герой нашего времени','В романе Лермонтова соединены пять историй о молодом человеке, которого автор назвал ','Лермонтов','978-5-9691-1601-6','2017','0');
-INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Маскарад','"Маскарад" - драма Михаила Юрьевича Лермонтова в четырёх действиях. Дворянин Евгений Арбенин ','Лермонтов','979-5-9691-1601-7','2017','0');
+INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Маскарад','"Маскарад" - драма Михаила Юрьевича Лермонтова в четырёх действиях. Дворянин Евгений Арбенин ','Лермонтов','979-5-9691-1601-7','2017','1');
 INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Демон.Сборник','В книгу великого русского поэта Михаила Юрьевича Лермонтова включены поэмы и повести ','Лермонтов','980-5-9691-1601-8','2012','0');
 INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Сказка о царе Салтане','Дорогие читатели! Перед вами одна из сказок Александра Сергеевича Пушкина ','Пушкин','691-5-91045-983-4','2016','0');
 INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Пиковая дама','Успех повести "Пиковая дама" начался с первого издания в 1834 году в журнале "Библиотека ','Пушкин','692-5-91045-983-4','2017','0');
-INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Преступление и наказание ','Роман «Преступление и наказание» — образец психологической и ','Достоевский','990-5-9691-1601-3','2017','0');
+INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Преступление и наказание ','Роман «Преступление и наказание» — образец психологической и ','Достоевский','990-5-9691-1601-3','2017','1');
 INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Бесы','«Одно отрицание, без всякого великодушия и безо всякой силы» — произносит главный роман Николай ','Достоевский','991-5-9691-1601-6 ','2017','0');
 INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Мцыри','В книге представлены стихотворения и поэма "Мцыри".','Лермонтов','981-5-9691-1601-9','2007','0');
 INSERT INTO book (title, description, author, isbn, printYear, readAlready) VALUE ('Бородино: Стихотворения и поэма ','В сборник вошли избранные стихотворения великого русского поэта 18 ','Лермонтов','982-5-9691-1601-10','2004','0');

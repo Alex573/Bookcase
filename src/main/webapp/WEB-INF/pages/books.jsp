@@ -169,7 +169,8 @@
     <input type="submit" value="Поиск"/>
 </form>
 <form action="/search/readAlready">
-    Прочтено: <input type="text" name="readAlready"/>
+    Прочтено: <input type="checkbox" name="readAlready" value="true"/>
+    НеПрочтено: <input type="checkbox" name="readAlready" value="false"/>
     <input type="submit" value="Поиск"/>
 </form>
 <form action="/">
