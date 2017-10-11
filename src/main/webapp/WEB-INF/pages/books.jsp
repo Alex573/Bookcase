@@ -149,7 +149,7 @@
             <td>Непрочитана</td>
             <c:if test="${!empty book.title}">
                 <c:if test="${book.readAlready}">
-                    <td><input name="readAlready" type="checkbox" value="false"/></td>
+                    <td><input name="readAlready" type="checkbox" value="false" onclick="window.event.returnValue=false"/></td>
                 </c:if>
                 <c:if test="${!book.readAlready}">
                     <td><input name="readAlready" type="checkbox" checked value="false"/></td>
@@ -218,14 +218,22 @@
                 <td>${book.author}</td>
                 <td>${book.isbn}</td>
                 <td>${book.printYear}</td>
-                <td>${book.readAlready}</td>
+                <td>
+                    <c:if test="${!book.readAlready}">
+                         <input name="readAlready" type="checkbox" onclick="window.event.returnValue=false">
+                    </c:if>
+                    <c:if test="${book.readAlready}">
+                         <input name="readAlready" type="checkbox" checked onclick="window.event.returnValue=false">
+
+                    </c:if>
+                </td>
                 <td>
                     <form action="/edit/${book.id}">
                         <input type="submit" value="Изменить">
                     </form>
                 </td>
                 <td>
-                    <form action="/delete/${book.id}">
+                    <form action="/del/${book.id}">
                         <input type="submit" value="Удалить">
                     </form>
                 </td>
