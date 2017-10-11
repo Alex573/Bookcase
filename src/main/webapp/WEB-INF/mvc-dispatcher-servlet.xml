@@ -14,7 +14,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!-- Database -->
+    <!-- DriverBaza -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -41,7 +41,7 @@
         </property>
     </bean>
 
-    <!-- DAO and Service beans-->
+    <!-- DAO and Service-->
     <bean id="bookDao" class="program.bookcase.dao.BookDaoImpl">
         <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
