@@ -101,14 +101,13 @@
         </tr>
         <tr>
         <tr>
-            <td>
-                <form:label path="author">
-                    <spring:message text="Автор"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="author"/>
-            </td>
+        <td>Автор:</td>
+        <c:if test="${!empty book.title}">
+            <td><form:input path="author" readonly="true"/></td>
+        </c:if>
+        <c:if test="${empty book.title}">
+            <td><form:input path="author"/></td>
+        </c:if>
         </tr>
         <tr>
             <td>
@@ -132,14 +131,19 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <form:label path="readAlready">
-                    <spring:message text="Прочитана"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="readAlready"/>
-            </td>
+            <td>Прочитана</td>
+            <c:if test="${!empty book.title}">
+                 <c:if test="${book.readAlready}">
+                    <td><form:input path="readAlready" readonly="true" value="false"/></td>
+                 </c:if>
+                <c:if test="${!book.readAlready}">
+                    <td><form:input path="readAlready"/></td>
+                </c:if>
+            </c:if>
+            <c:if test="${empty book.title}">
+                <td><form:input path="readAlready"/></td>
+            </c:if>
+        </tr>
         </tr>
         <tr>
             <td colspan="2">
@@ -169,8 +173,8 @@
     <input type="submit" value="Поиск"/>
 </form>
 <form action="/search/readAlready">
-    Прочтено: <input type="checkbox" name="readAlready" value="true"/>
-    НеПрочтено: <input type="checkbox" name="readAlready" value="false"/>
+    Прочитана: <input type="checkbox" name="readAlready" value="true"/>
+    НеПрочитана: <input type="checkbox" name="readAlready" value="false"/>
     <input type="submit" value="Поиск"/>
 </form>
 <form action="/">
