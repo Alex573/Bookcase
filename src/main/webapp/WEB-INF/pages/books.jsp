@@ -101,7 +101,7 @@
         </tr>
         <tr>
         <tr>
-        <td>Автор:</td>
+        <td>Автор</td>
         <c:if test="${!empty book.title}">
             <td><form:input path="author" readonly="true"/></td>
         </c:if>
@@ -133,17 +133,31 @@
         <tr>
             <td>Прочитана</td>
             <c:if test="${!empty book.title}">
-                 <c:if test="${book.readAlready}">
-                    <td><form:input path="readAlready" readonly="true" value="false"/></td>
-                 </c:if>
+                <c:if test="${book.readAlready}">
+                    <td><input name="readAlready" type="checkbox" checked value="true" onclick="window.event.returnValue=false"/></td>
+                </c:if>
                 <c:if test="${!book.readAlready}">
-                    <td><form:input path="readAlready"/></td>
+                    <td><input name="readAlready" type="checkbox" value="true"/></td>
                 </c:if>
             </c:if>
             <c:if test="${empty book.title}">
-                <td><form:input path="readAlready"/></td>
+                <td><input name="readAlready" type="checkbox" value="true"/></td>
             </c:if>
+
         </tr>
+        <tr>
+            <td>Непрочитана</td>
+            <c:if test="${!empty book.title}">
+                <c:if test="${book.readAlready}">
+                    <td><input name="readAlready" type="checkbox" value="false"/></td>
+                </c:if>
+                <c:if test="${!book.readAlready}">
+                    <td><input name="readAlready" type="checkbox" checked value="false"/></td>
+                </c:if>
+            </c:if>
+            <c:if test="${empty book.title}">
+                <td><input name="readAlready" type="checkbox" value="false"/></td>
+            </c:if>
         </tr>
         <tr>
             <td colspan="2">
