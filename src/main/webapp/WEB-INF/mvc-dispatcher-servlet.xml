@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:beans="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
@@ -50,7 +50,9 @@
         </property>
     </bean>
 
-     <!--DAO and Service-->
+
+
+    <!--DAO and Service-->
     <bean id="bookDao" class="program.bookcase.dao.BookDaoImpl">
         <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
@@ -65,6 +67,20 @@
     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
+
+    <beans:props>
+        <beans:prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+        </beans:prop>
+        <beans:prop key="hibernate.show_sql">true</beans:prop>
+
+        <beans:prop key="hibernate.hbm2ddl.auto">update</beans:prop>
+
+        <beans:prop key="maxwait">10000</beans:prop>
+        <beans:prop key="maxidle">25</beans:prop>
+        <beans:prop key="minidle">5</beans:prop>
+
+    </beans:props>
+
 
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
