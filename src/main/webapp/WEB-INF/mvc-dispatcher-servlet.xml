@@ -14,15 +14,24 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <!-- DriverBaza -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-          destroy-method="close">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
+    <!--&lt;!&ndash; DriverBaza &ndash;&gt;-->
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"-->
+          <!--destroy-method="close">-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver"/>-->
+        <!--<property name="url" value="jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8"/>-->
+        <!--<property name="username" value="root"/>-->
+        <!--<property name="password" value="root"/>-->
+    <!--</bean>-->
+    <!--heroku-->
+    <bean class="java.net.URI" id="dbUrl">
+        <constructor-arg value="#{systemEnvironment['CLEARDB_DATABASE_URL']}"/>
     </bean>
 
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="url" value="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"/>
+        <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+        <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
+    </bean>
     <!-- Hibernate -->
     <bean id="hibernate5AnnotatedSessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
