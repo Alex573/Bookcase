@@ -41,7 +41,7 @@
         </property>
     </bean>
 
-    <!-- DAO and Service-->
+     <!--DAO and Service-->
     <bean id="bookDao" class="program.bookcase.dao.BookDaoImpl">
         <property name="sessionFactory" ref="hibernate5AnnotatedSessionFactory"/>
     </bean>
@@ -50,7 +50,6 @@
         <property name="bookDao" ref="bookDao"/>
     </bean>
 
-    <context:component-scan base-package="program.bookcase.controller"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 

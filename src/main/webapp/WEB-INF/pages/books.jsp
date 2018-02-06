@@ -55,14 +55,14 @@
 </head>
 <body>
 
-<h1>Библиотека</h1>
+<h1>Library</h1>
 
 
 <c:if test="${!empty book.title}">
-    <div align="right">Изменить</div>
+    <div align="right">Change</div>
 </c:if>
 <c:if test="${empty book.title}">
-    <div align="right">Добавить</div>
+    <div align="right">New book add</div>
 </c:if>
 <c:url var="add" value="/books/add"/>
 <form:form action="${add}" commandName="book">
@@ -82,7 +82,7 @@
         <tr>
             <td>
                 <form:label path="title">
-                    <spring:message text="Название"/>
+                    <spring:message text="Title"/>
                 </form:label>
             </td>
             <td>
@@ -92,7 +92,7 @@
         <tr>
             <td>
                 <form:label path="description">
-                    <spring:message text="Описание"/>
+                    <spring:message text="Description"/>
                 </form:label>
             </td>
             <td>
@@ -101,7 +101,7 @@
         </tr>
         <tr>
         <tr>
-        <td>Автор</td>
+        <td>Autor</td>
         <c:if test="${!empty book.title}">
             <td><form:input path="author" readonly="true"/></td>
         </c:if>
@@ -123,7 +123,7 @@
         <tr>
             <td>
                 <form:label path="printYear">
-                    <spring:message text="Год"/>
+                    <spring:message text="Year"/>
                 </form:label>
             </td>
             <td>
@@ -131,10 +131,11 @@
             </td>
         </tr>
         <tr>
-            <td>Прочитана</td>
+            <td>Read already</td>
             <c:if test="${!empty book.title}">
                 <c:if test="${book.readAlready}">
-                    <td><input name="readAlready" type="checkbox" checked value="true" onclick="window.event.returnValue=false"/></td>
+                    <td><input name="readAlready" type="checkbox"
+                               checked value="true" onclick="window.event.returnValue=false"/></td>
                 </c:if>
                 <c:if test="${!book.readAlready}">
                     <td><input name="readAlready" type="checkbox" value="true"/></td>
@@ -146,7 +147,7 @@
 
         </tr>
         <tr>
-            <td>Непрочитана</td>
+            <td>Unread</td>
             <c:if test="${!empty book.title}">
                 <c:if test="${book.readAlready}">
                     <td><input name="readAlready" type="checkbox" value="false" onclick="window.event.returnValue=false"/></td>
@@ -163,36 +164,36 @@
             <td colspan="2">
                 <c:if test="${!empty book.title}">
                     <input type="submit"
-                           value="<spring:message text="Изменить"/>"/>
+                           value="<spring:message text="Change"/>"/>
                 </c:if>
                 <c:if test="${empty book.title}">
                     <input type="submit"
-                           value="<spring:message text="Добавить"/>"/>
+                           value="<spring:message text="Add"/>"/>
                 </c:if>
             </td>
         </tr>
     </table>
 </form:form>
-<div align="left">Поиск</div>
+<div align="left">Search</div>
 <form action="/search/title">
-    Название: <input type="text" name="title"/>
-    <input type="submit" value="Поиск"/>
+    Title: <input type="text" name="title"/>
+    <input type="submit" value="Search"/>
 </form>
 <form action="/search/author">
-    Автор: <input type="text" name="author"/>
-    <input type="submit" value="Поиск"/>
+    Author: <input type="text" name="author"/>
+    <input type="submit" value="Search"/>
 </form>
 <form action="/search/printYear">
-    Год: <input type="text" name="printYear"/>
-    <input type="submit" value="Поиск"/>
+    Year: <input type="text" name="printYear"/>
+    <input type="submit" value="Search"/>
 </form>
 <form action="/search/readAlready">
-    Прочитана: <input type="checkbox" name="readAlready" value="true"/>
-    НеПрочитана: <input type="checkbox" name="readAlready" value="false"/>
-    <input type="submit" value="Поиск"/>
+    Read already: <input type="checkbox" name="readAlready" value="true"/>
+    Unread: <input type="checkbox" name="readAlready" value="false"/>
+    <input type="submit" value="Search"/>
 </form>
 <form action="/">
-    <input type="submit" value="Сброс"/>
+    <input type="submit" value="Home page"/>
 </form>
 
 
@@ -201,14 +202,14 @@
 <c:if test="${!empty listBooks}">
     <table class="tg">
         <tr>
-            <th width="120">Название</th>
-            <th width="100">Описание</th>
-            <th width="100">Автор</th>
+            <th width="120">Title</th>
+            <th width="100">Description</th>
+            <th width="100">Author</th>
             <th width="50">ISBN</th>
-            <th width="30">Год</th>
-            <th width="30">Прочтена</th>
-            <th width="30">Изменить</th>
-            <th width="30">Удалить</th>
+            <th width="30">Year</th>
+            <th width="30">read already</th>
+            <th width="30">Change</th>
+            <th width="30">Delete</th>
 
         </tr>
         <c:forEach items="${listBooks}" var="book">
@@ -229,12 +230,12 @@
                 </td>
                 <td>
                     <form action="/edit/${book.id}">
-                        <input type="submit" value="Изменить">
+                        <input type="submit" value="Change">
                     </form>
                 </td>
                 <td>
                     <form action="/del/${book.id}">
-                        <input type="submit" value="Удалить">
+                        <input type="submit" value="Delete">
                     </form>
                 </td>
             </tr>
@@ -251,7 +252,7 @@
             <c:param name="page" value="${page-1}"/>
         </c:url>
         <c:if test="${page > 1}">
-            <a href="<c:out value="${prev}" />" class="pn prev">Предыдущая</a>
+            <a href="<c:out value="${prev}" />" class="pn prev">Prev</a>
         </c:if>
 
         <c:forEach begin="1" end="${maxPages}" step="1" varStatus="i">
@@ -271,7 +272,7 @@
             <c:param name="page" value="${page + 1}"/>
         </c:url>
         <c:if test="${page + 1 <= maxPages}">
-            <a href='<c:out value="${next}" />' class="pn next">Следующая</a>
+            <a href='<c:out value="${next}" />' class="pn next">Next</a>
         </c:if>
     </div>
 </div>
