@@ -1,7 +1,6 @@
 # Bookcase
 https://bookcase-vas.herokuapp.com
 CRUB Book work and  with cyrillic alphabet
-https://bookcase-vas.herokuapp.com
 CRUD (create, read, update, delete).
 You have only 1 table book. It stores a list of books (for example, on a bookshelf). Books on the shelf can be added (create), take a look (read), replace with a new release (update), remove (delete).
 The data that should be in the table:
